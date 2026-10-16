@@ -1,0 +1,88 @@
+TONNET 網頁 UI/UX 與 SEO 改版紀錄（2026-10-16）
+
+主要檔案：index.html.html
+設計樣式：assets/site.css
+互動程式：assets/site.js
+原頁備份：封存\index-before-ui-review-2026-10-16T07-18-43-929Z.html
+
+原先問題與完成調整
+1. 首屏主題抽象、打字動畫使主標題需等待才完整顯示。
+   改為可見且唯一的 H1、清楚的場域說明、需求表單與方案探索入口。
+2. 技術資訊密度高、方案位置偏後、導航包含籌備內容。
+   三大方案提前，案例與品牌分區；技術架構、示意情境、籌備文章保留於摺疊區。
+3. 字型混用、間距與元件規則累積覆寫。
+   重建單一字型堆疊、按鈕與卡片規格、區塊留白與 960/700/380px 響應式層次。
+4. 手機選單只改透明度，關閉狀態仍可能被鍵盤選取。
+   改用 hidden，加入 aria-expanded、Escape 關閉、焦點返回、視窗尺寸切換。
+5. 模組篩選使用不完整的 tab 語意。
+   改為按鈕群組與 aria-pressed、真實隱藏未符合模組，加入結果數量通知。
+6. SEO 與分享資料不足。
+   更新 title/description、OG/Twitter 文字、語言設定、Organization JSON-LD；保留可見文字與圖片替代說明。
+7. 外部圖示 CDN 依賴。
+   Font Awesome 6.7.2 的樣式與所需品牌／實心 woff2 已保存於 assets/vendor/fontawesome。
+
+保留內容
+- 正式 Logo 原始 150 × 38 比例與案例介紹原圖。
+- 三大方案的 9 / 8 / 7 項系統與九大模組。
+- LINE、Facebook、Google Form、Google 行事曆指定連結。
+- LinkedIn/GitHub 圖示仍保留，連結待提供。
+- 方案示例與籌備專欄仍明確標示狀態，未改成已完成案例或已發布文章。
+
+已完成驗證
+- HTML 使用 parse5 解析，無結構解析錯誤；無重複 ID；所有頁內錨點有目標。
+- Acorn 與 CSS Tree 語法解析通過。
+- 圖片尺寸、alt、本機資源路徑、JSON-LD 格式檢查通過。
+- 手機選單、Escape、桌面切換、模組篩選、詳細區塊錨點的程式行為測試通過。
+- 主要文字與背景配色的計算對比皆達 4.5:1。
+- 本機 HTTP 預覽的 HTML/CSS/JS/圖片/圖示字型皆回應 200。
+
+限制與正式上線待辦
+- 工具未提供可用瀏覽器；尚未實際驗證桌面/手機畫面、觸控操作與螢幕閱讀器。程式測試不等同完整 WCAG 或瀏覽器驗證。
+- 正式 HTTPS 網址 Not provided：canonical、og:url、絕對路徑分享圖片及 Organization url/logo 不能填入猜測網址。
+- 上線時將入口映射為 index.html，避免同時公開兩個相同首頁網址；一併上傳 assets 與作品集資料夾。
+- 上線後以正式網址設定 sitemap.xml、檢查 robots.txt 與索引權限、提交 Search Console，並測試分享預覽與 Rich Results。
+- 公司電話、地址與 LinkedIn/GitHub 網址 Not provided，未擅自補寫。
+- 原頁沿革與品牌主張沿用既有內容，尚未獨立驗證；得獎與案例紀錄依公司提供之介紹圖呈現。
+- 本次未公開發布網站，亦未提交表單或對外訊息。
+
+參考資料
+Google Search Central — Title links:
+https://developers.google.com/search/docs/appearance/title-link
+Google Search Central — Meta descriptions:
+https://developers.google.com/search/docs/appearance/snippet
+Google Search Central — Organization structured data:
+https://developers.google.com/search/docs/appearance/structured-data/organization
+W3C WAI — Disclosure pattern:
+https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/
+
+
+2026-10-16 公益活動影片頁更新
+- 新增 charity.html、assets/charity.css、assets/charity.js 及影片縮圖。首頁導航、案例後預覽區與頁尾已加入入口。
+- 採用實際連結影片 jYWhgd8twoo；YouTube oEmbed 回傳名稱「2026 淨灘_老梅綠石槽」，作者「通航國際」。
+- 預設靜音、自動循環播放，提供暫停、聲音、滿版/完整畫面、專注觀看及支援瀏覽器的全螢幕按鈕。
+- 自動播放受阻時顯示手動播放，載入失敗時提供 YouTube 連結；減少動態偏好與背景分頁會暫停播放。
+- 影片框比例依縮圖可見畫面推定為正方形；滿版採裁切，完整畫面模式保留整個播放器。實際影片尺寸 Unable to verify。
+- 已通過 HTML/JS/CSS 解析、路徑/錨點檢查、自動播放/循環參數檢查及模擬播放器互動測試；所有新資源於本機 HTTP 預覽回應 200。
+- 目前無可用瀏覽器，尚未實際驗證 YouTube 嵌入播放、手機畫面與裁切構圖。
+- 請透過 HTTP/HTTPS 或 IDE Live Server 預覽；直接用 file:// 開啟可能缺少 YouTube 所需的 HTTP Referer（錯誤153）。
+- 未修改使用者另存的 index_video.html.html，亦未公開發布。
+- 官方實作參考：https://developers.google.com/youtube/player_parameters 與 https://developers.google.com/youtube/iframe_api_reference
+
+
+2026-10-16 聯絡表單更新
+- 加入使用者提供的聯絡信箱、電話、地址及統編，並更新首頁 Organization 結構化資料。
+- 加入姓名、電子信箱、三項需求複選、需求簡介、週一至週五 09:00–17:00 聯絡時段。
+- 加入必填/空白檢查、至少一項需求驗證、信箱格式檢查及字數限制。
+- 沒有表單收件後端；按鈕會開啟郵件程式並帶入內容，使用者仍須自行確認寄出。未顯示已成功寄送的誤導訊息。
+- 保留 Google 表單，提供複製內容及手動複製備援，不在網站儲存填寫資料。
+- HTML/CSS/JS 靜態解析與郵件內容模擬測試通過；未實際寄出郵件，尚未瀏覽器實測。
+
+
+Google 表單 POST 串接設定更新
+- 表單改用使用者指定 formResponse action 與 POST；使用預設 application/x-www-form-urlencoded，不再使用 mailto 或 text/plain。
+- 五個欄位名稱依序為 entry.588998168、entry.476214014、entry.1610329698、entry.1646642689、entry.1091995575。
+- 核取方塊值精確為「建案弱電統包」「系統建置」「選項 3」；同名 entry.1610329698 重複傳送已選值。未加入 sentinel 答案欄位。
+- 下拉選單有效值僅「選項 1」，已移除先前自行設定的聯絡時段。
+- 使用原生 POST 另開 Google 提交結果頁，不用 no-cors 或隱藏 iframe 推斷成功；未重設欄位。
+- 已通過 HTML/JS 解析、五項欄位對應及七種複選組合的本機編碼檢查。
+- 尚未實際送出，收件結果 Unable to verify；須實際提交並確認 Google 提交頁及表單回覆紀錄後，才能確認端到端串接成功。
